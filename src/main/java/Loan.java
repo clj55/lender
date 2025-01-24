@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 public class Loan {
     private String borrower;
     private int amount;
@@ -9,7 +11,12 @@ public class Loan {
         this.amount = amount;
         this.interestRate = interestRate;
         this.isPaid = false;
+        if (amount > MAX_LOAN_AMOUNT) {
+            MAX_LOAN_AMOUNT = amount;
+        }
     }
+
+    public static int MAX_LOAN_AMOUNT = 0;
 
     public void setAsPaid() {
         isPaid = true;
@@ -30,4 +37,5 @@ public class Loan {
     public double getProfit() {
         return amount * interestRate;
     }
+
 }
